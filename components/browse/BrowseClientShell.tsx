@@ -69,12 +69,6 @@ export default function BrowseClientShell() {
             textAlign: 'center',
           }}
         >
-          <div
-            className="font-display font-extrabold text-accent"
-            style={{ fontSize: 48, marginBottom: 12 }}
-          >
-            —
-          </div>
           <p className="font-mono text-muted-2" style={{ fontSize: 16, marginBottom: 20 }}>
             No portfolios match your filter.
           </p>
