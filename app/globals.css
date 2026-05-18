@@ -44,6 +44,10 @@ input:focus { outline: none; }
 @keyframes ping {
   75%, 100% { transform: scale(2); opacity: 0; }
 }
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
 
 .cta-btn {
   transition: box-shadow 200ms ease, transform 200ms ease;
