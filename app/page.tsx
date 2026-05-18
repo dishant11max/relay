@@ -8,6 +8,8 @@ import StatsBar from '@/components/landing/StatsBar'
 import FinalCTA from '@/components/landing/FinalCTA'
 import Footer from '@/components/landing/Footer'
 
+export const dynamic = 'force-dynamic'
+
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-bg">

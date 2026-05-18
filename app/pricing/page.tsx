@@ -4,6 +4,8 @@ import FeatureTable from '@/components/pricing/FeatureTable'
 import PricingFAQ from '@/components/pricing/PricingFAQ'
 import Footer from '@/components/landing/Footer'
 
+export const dynamic = 'force-dynamic'
+
 export default function PricingPage() {
   return (
     <main className="bg-bg min-h-screen">
