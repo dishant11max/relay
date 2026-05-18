@@ -55,42 +55,22 @@ function Cell({ value, isProCol = false }: { value: CellValue; isProCol?: boolea
   if (value === true) {
     return (
       <td style={{ padding: '10px 16px', textAlign: 'center' }}>
-        <div
-          style={{
-            width: 16,
-            height: 16,
-            background: '#4afe80',
-            margin: '0 auto',
-          }}
-        />
+        <span style={{ color: '#4afe80', fontFamily: 'var(--font-mono)', fontSize: 14 }}>✓</span>
       </td>
     )
   }
   if (value === false) {
     return (
       <td style={{ padding: '10px 16px', textAlign: 'center' }}>
-        <div
-          style={{
-            width: 16,
-            height: 16,
-            background: '#1a1a1a',
-            margin: '0 auto',
-          }}
-        />
+        <span style={{ color: '#2a2a2a', fontFamily: 'var(--font-mono)', fontSize: 14 }}>—</span>
       </td>
     )
   }
   return (
-    <td
-      className="font-mono"
-      style={{
-        padding: '10px 16px',
-        textAlign: 'center',
-        fontSize: 14,
-        color: isProCol ? '#4afe80' : '#a3a3a3',
-      }}
-    >
-      {value}
+    <td style={{ padding: '10px 16px', textAlign: 'center' }}>
+      <span style={{ color: isProCol ? '#4afe80' : '#3a3a3a', fontFamily: 'var(--font-mono)', fontSize: 11 }}>
+        {value}
+      </span>
     </td>
   )
 }

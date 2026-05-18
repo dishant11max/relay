@@ -53,7 +53,7 @@ const PRO_FEATURES = [
   'Everything in Free, plus:',
   'Unlimited ATS scoring & JD targeting',
   'Unlimited resume exports (LaTeX + PDF)',
-  'Minimalist portfolio at {username}.resumegit.dev',
+  'Minimalist portfolio at your-handle.resumegit.dev',
   'Auto-sync on every GitHub push',
   'Custom domain support',
   'Resume version history (last 10)',

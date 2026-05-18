@@ -130,19 +130,16 @@ export default function PortfolioCard({ username, role, stack, ats, repos, stars
           alignItems: 'center',
         }}
       >
-        <span className="font-mono text-muted" style={{ fontSize: 12 }}>
-          {username}.resumegit.dev
+        <span className="font-mono text-muted" style={{ fontSize: 12, color: '#333' }}>
+          portfolio coming soon
         </span>
-        <a
-          href={`https://${username}.resumegit.dev`}
-          onClick={(e) => e.stopPropagation()}
-          className="font-mono text-accent"
-          style={{ fontSize: 12, textDecoration: 'none' }}
-          onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-          onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
+        <span
+          title="Portfolio pages coming soon"
+          style={{ cursor: 'not-allowed', opacity: 0.4 }}
+          className="font-mono text-[9px] text-accent"
         >
           VIEW →
-        </a>
+        </span>
       </div>
     </div>
   )

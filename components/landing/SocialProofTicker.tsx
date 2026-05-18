@@ -82,7 +82,7 @@ export default function SocialProofTicker() {
           background: '#060606',
         }}
       >
-        HIRED
+        RECENTLY
       </div>
 
       {/* Scrolling track */}
