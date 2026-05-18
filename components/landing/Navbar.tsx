@@ -14,13 +14,12 @@ export default async function Navbar() {
 
   return (
     <>
-      {/* Spacer to prevent content from jumping up behind the fixed navbar */}
       <div style={{ height: '52px' }} />
       <nav
         className="fixed top-0 left-0 w-full z-50 border-b border-[#161616]"
         style={{
           height: '52px',
-          background: 'rgba(8,8,8,0.88)',
+          background: 'rgba(8,8,8,0.92)',
           backdropFilter: 'blur(4px)',
           WebkitBackdropFilter: 'blur(4px)',
           padding: '0 var(--page-px)',
@@ -32,22 +31,20 @@ export default async function Navbar() {
             <div className="flex h-5 w-5 items-center justify-center bg-accent">
               <span className="font-mono text-[14px] font-black text-black">R</span>
             </div>
-            <span className="font-mono text-[15px] tracking-[0.06em] text-body">
-              RELAY
-            </span>
+            <span className="font-mono text-[15px] tracking-[0.06em] text-body">RELAY</span>
           </a>
 
           {/* Right nav */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 md:gap-6">
             <a
               href="/browse"
-              className="font-mono text-[14px] tracking-wide text-muted-2 transition-colors hover:text-body"
+              className="hidden sm:block font-mono text-[13px] md:text-[14px] tracking-wide text-muted-2 transition-colors hover:text-body"
             >
               BROWSE
             </a>
             <a
               href="/pricing"
-              className="font-mono text-[14px] tracking-wide text-muted-2 transition-colors hover:text-body"
+              className="hidden sm:block font-mono text-[13px] md:text-[14px] tracking-wide text-muted-2 transition-colors hover:text-body"
             >
               PRICING
             </a>
@@ -58,15 +55,15 @@ export default async function Navbar() {
               <>
                 <a
                   href="/sign-in"
-                  className="font-mono text-[14px] tracking-wide text-muted-2 transition-colors hover:text-body"
+                  className="hidden sm:block font-mono text-[13px] md:text-[14px] tracking-wide text-muted-2 transition-colors hover:text-body"
                 >
                   SIGN IN
                 </a>
                 <a
                   href="/sign-in"
-                  className="bg-accent px-[14px] py-[7px] font-mono text-[13px] font-bold tracking-[0.08em] text-black transition-opacity hover:opacity-90"
+                  className="bg-accent px-[12px] md:px-[14px] py-[6px] md:py-[7px] font-mono text-[11px] md:text-[13px] font-bold tracking-[0.08em] text-black transition-opacity hover:opacity-90 whitespace-nowrap"
                 >
-                  CONNECT GITHUB →
+                  CONNECT →
                 </a>
               </>
             )}

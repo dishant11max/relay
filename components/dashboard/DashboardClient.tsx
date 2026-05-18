@@ -165,13 +165,15 @@ export default function DashboardClient({ userId, username, avatarUrl, githubTok
 
       {/* Main content */}
       <main
-        className="flex-1 overflow-y-auto"
-        style={{
-          marginLeft: 200,
-          padding: '32px 36px',
-          maxWidth: 'calc(100vw - 200px)',
-        }}
+        className="flex-1 overflow-y-auto w-full md:ml-[200px]"
+        style={{ paddingBottom: 72 }}
       >
+        <div
+          style={{
+            padding: 'clamp(20px, 4vw, 32px) clamp(16px, 4vw, 36px)',
+            maxWidth: '100%',
+          }}
+        >
         {/* Page header */}
         <div className="mb-8 flex items-end justify-between">
           <div>
@@ -183,7 +185,7 @@ export default function DashboardClient({ userId, username, avatarUrl, githubTok
             </p>
             <h1
               className="font-display font-extrabold text-body"
-              style={{ fontSize: 30, letterSpacing: '-0.025em', lineHeight: 1 }}
+              style={{ fontSize: 'clamp(20px, 4vw, 30px)', letterSpacing: '-0.025em', lineHeight: 1 }}
             >
               {activeSection === 'overview' && `Good work, @${username}.`}
               {activeSection === 'repos' && 'Your repositories.'}
@@ -229,10 +231,10 @@ export default function DashboardClient({ userId, username, avatarUrl, githubTok
             {activeSection === 'overview' && (
               <>
                 <StatsRow data={data} />
-                <CommitGraph events={data.events} username={username} />
+                <CommitGraph events={data.events} username={username} calendar={data.contributionCalendar} />
                 <div
                   className="mt-8 grid gap-6"
-                  style={{ gridTemplateColumns: '1.5fr 1fr' }}
+                  style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
                 >
                   <RepoList repos={data.repos.slice(0, 6)} />
                   <ActivityFeed events={data.events} />
@@ -257,6 +259,7 @@ export default function DashboardClient({ userId, username, avatarUrl, githubTok
             )}
           </>
         )}
+        </div>
       </main>
     </div>
   )

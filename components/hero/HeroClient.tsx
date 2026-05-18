@@ -150,11 +150,11 @@ export function HeroClient() {
   /* ─── Left column ─────────────────────────────── */
   const leftCol = (
     <div
-      className="flex flex-col justify-center"
+      className="flex flex-col justify-center w-full"
       style={{
         flex: '0 0 56%',
         borderRight: '1px solid #141414',
-        padding: '80px 64px 80px var(--page-px)',
+        padding: 'clamp(40px, 8vw, 80px) clamp(24px, 5vw, 64px) clamp(40px, 8vw, 80px) var(--page-px)',
       }}
     >
       {/* ── Live badge ── */}
@@ -265,7 +265,7 @@ export function HeroClient() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.0, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="mb-8 font-mono leading-[1.75]"
-        style={{ fontSize: 18, maxWidth: 420, color: '#a3a3a3' }}
+        style={{ fontSize: 'clamp(14px, 2.5vw, 18px)', maxWidth: 420, color: '#a3a3a3' }}
       >
         Connect GitHub once.{' '}
         <span style={{ color: '#666' }}>
@@ -421,7 +421,7 @@ export function HeroClient() {
   /* ─── Right column ─────────────────────────────── */
   const rightCol = (
     <div
-      className="relative flex flex-1 flex-col items-center justify-center overflow-hidden"
+      className="relative hidden md:flex flex-1 flex-col items-center justify-center overflow-hidden"
       style={{ padding: '60px 52px' }}
     >
       {/* Floating labels — parallax */}
@@ -627,7 +627,7 @@ export function HeroClient() {
   return (
     <div
       ref={heroRef}
-      className="relative flex"
+      className="relative flex flex-col md:flex-row"
       style={{ minHeight: 'calc(100vh - 52px)' }}
       onMouseMove={(e) => {
         const rect = heroRef.current?.getBoundingClientRect()

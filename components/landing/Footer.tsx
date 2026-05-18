@@ -49,7 +49,7 @@ export default function Footer() {
       </div>
 
       {/* Main row */}
-      <div className="relative flex items-center justify-between">
+      <div className="relative flex flex-col items-center gap-5 md:flex-row md:items-center md:justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2.5">
           <div className="flex h-5 w-5 items-center justify-center bg-accent">
@@ -59,13 +59,13 @@ export default function Footer() {
         </a>
 
         {/* Center links */}
-        <nav className="flex gap-5" aria-label="Footer navigation">
+        <nav className="flex flex-wrap justify-center gap-4 md:gap-5" aria-label="Footer navigation">
           {NAV_LINKS.map((link) => (
             <a
               key={link}
               href="#"
               className="font-mono text-muted transition-colors hover:text-body"
-              style={{ fontSize: 14 }}
+              style={{ fontSize: 13 }}
             >
               {link}
             </a>
@@ -92,7 +92,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <p className="relative mt-5 text-center font-mono text-muted" style={{ fontSize: 14 }}>
+      <p className="relative mt-5 text-center font-mono text-muted" style={{ fontSize: 13 }}>
         © 2026 Relay. All rights reserved.
       </p>
     </footer>

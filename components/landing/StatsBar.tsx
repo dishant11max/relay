@@ -63,14 +63,14 @@ export default function StatsBar() {
   return (
     <section
       ref={ref}
-      className="flex flex-row border-t border-border"
-      style={{ padding: '64px var(--page-px)' }}
+      className="flex flex-col md:flex-row border-t border-border"
+      style={{ padding: '48px var(--page-px)' }}
     >
       {STATS.map((s, i) => (
-        <div key={s.label} className="flex flex-1">
+        <div key={s.label} className="flex flex-1 flex-col md:flex-row">
           <AnimatedStat {...s} started={inView} />
           {i < STATS.length - 1 && (
-            <div className="h-full w-px bg-border self-stretch" />
+            <div className="h-px md:h-full md:w-px bg-border self-stretch mx-8 md:mx-0 my-4 md:my-0" />
           )}
         </div>
       ))}

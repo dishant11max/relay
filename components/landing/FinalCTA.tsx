@@ -10,13 +10,13 @@ export default function FinalCTA() {
         {/* Heading */}
         <h2
           className="font-display font-extrabold text-body"
-          style={{ fontSize: 52, letterSpacing: '-0.03em', lineHeight: 1.1 }}
+          style={{ fontSize: 'clamp(28px, 6vw, 52px)', letterSpacing: '-0.03em', lineHeight: 1.1 }}
         >
           Your GitHub is already a resume.
         </h2>
         <h2
           className="mt-1 font-display font-extrabold"
-          style={{ fontSize: 52, letterSpacing: '-0.03em', lineHeight: 1.1, color: '#737373' }}
+          style={{ fontSize: 'clamp(28px, 6vw, 52px)', letterSpacing: '-0.03em', lineHeight: 1.1, color: '#737373' }}
         >
           You just haven&apos;t formatted it yet.
         </h2>
