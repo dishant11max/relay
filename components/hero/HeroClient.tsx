@@ -333,19 +333,20 @@ export function HeroClient() {
           {/* Analyze — magnetic button (taste-skill §4) */}
           <motion.button
             ref={magnetic.ref}
-            style={{ x: magnetic.sx, y: magnetic.sy }}
             onClick={analyze}
             disabled={phase === 'scanning'}
             whileTap={{ scale: 0.97 }}
             className="bg-accent font-mono font-bold tracking-[0.08em] text-black disabled:opacity-50"
             style={{
+              x: magnetic.sx,
+              y: magnetic.sy,
               fontSize: 13,
               height: 48,
               padding: '0 20px',
               cursor: 'pointer',
               border: 'none',
               flexShrink: 0,
-            } as React.CSSProperties}
+            }}
           >
             ANALYZE
           </motion.button>
