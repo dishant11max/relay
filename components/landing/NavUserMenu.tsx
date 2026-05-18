@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -14,6 +14,17 @@ export default function NavUserMenu({ username, avatarUrl }: Props) {
   const [open, setOpen] = useState(false)
   const supabase = createClientComponentClient()
   const router = useRouter()
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   const handleSignOut = async () => {
     await supabase.auth.signOut()
@@ -25,12 +36,16 @@ export default function NavUserMenu({ username, avatarUrl }: Props) {
 
   return (
     <div
+      ref={menuRef}
       className="relative"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
       {/* Avatar Button */}
-      <button className="flex items-center gap-2 cursor-pointer border-none bg-transparent">
+      <button 
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-2 cursor-pointer border-none bg-transparent"
+      >
         {avatarUrl ? (
           <img
             src={avatarUrl}

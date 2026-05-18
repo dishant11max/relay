@@ -85,7 +85,7 @@ export default function PricingFAQ() {
       style={{
         maxWidth: 640,
         margin: '0 auto',
-        padding: '0 36px 100px',
+        padding: '0 var(--page-px) 100px',
       }}
     >
       <h2

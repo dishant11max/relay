@@ -9,14 +9,15 @@ export default function ChaosClarity() {
       </div>
 
       {/* Two columns */}
-      <div className="flex" style={{ borderTop: '1px solid #1a1a1a' }}>
+      <div className="flex flex-col md:flex-row" style={{ borderTop: '1px solid #1a1a1a' }}>
         {/* LEFT — The Old Way */}
         <div
           className="relative flex-1 overflow-hidden"
           style={{
             background: 'rgba(255,77,77,0.025)',
             borderRight: '1px solid #1a1a1a',
-            padding: '48px 48px 64px',
+            borderBottom: '1px solid #1a1a1a',
+            padding: '48px clamp(24px, 5vw, 48px) 64px',
           }}
         >
           <p className="mb-4 font-mono text-[12px] tracking-[0.12em]" style={{ color: 'rgba(255,77,77,0.4)' }}>
@@ -53,7 +54,7 @@ export default function ChaosClarity() {
           <div className="mt-20 text-center">
             <div
               className="font-display font-extrabold leading-none"
-              style={{ fontSize: 80, color: 'rgba(255,77,77,0.25)' }}
+              style={{ fontSize: 'clamp(56px, 15vw, 80px)', color: 'rgba(255,77,77,0.25)' }}
             >
               4+
             </div>
@@ -71,7 +72,7 @@ export default function ChaosClarity() {
           className="relative flex-1"
           style={{
             background: 'rgba(74,254,128,0.018)',
-            padding: '48px 48px 64px',
+            padding: '48px clamp(24px, 5vw, 48px) 64px',
           }}
         >
           <p className="mb-4 font-mono text-[12px] tracking-[0.12em]" style={{ color: 'rgba(74,254,128,0.4)' }}>
@@ -117,7 +118,7 @@ export default function ChaosClarity() {
             <div
               className="font-display font-extrabold leading-none text-accent"
               style={{
-                fontSize: 80,
+                fontSize: 'clamp(56px, 15vw, 80px)',
                 textShadow: '0 0 60px rgba(74,254,128,0.15)',
               }}
             >

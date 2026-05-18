@@ -97,7 +97,7 @@ function Cell({ value, isProCol = false }: { value: CellValue; isProCol?: boolea
 
 export default function FeatureTable() {
   return (
-    <div style={{ padding: '0 36px 80px' }}>
+    <div style={{ padding: '0 var(--page-px) 80px' }}>
       {/* Section header */}
       <p
         className="font-mono tracking-[0.18em] text-accent"
@@ -117,12 +117,14 @@ export default function FeatureTable() {
         Everything, side by side.
       </h2>
 
-      <table
-        style={{
-          width: '100%',
-          borderCollapse: 'collapse',
-        }}
-      >
+      <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+        <table
+          style={{
+            width: '100%',
+            minWidth: 600,
+            borderCollapse: 'collapse',
+          }}
+        >
         {/* Table header */}
         <thead>
           <tr style={{ background: '#0c0c0c', borderBottom: '1px solid #1e1e1e' }}>
@@ -209,6 +211,7 @@ export default function FeatureTable() {
           </tbody>
         ))}
       </table>
+      </div>
     </div>
   )
 }

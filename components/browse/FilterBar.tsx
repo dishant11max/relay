@@ -34,7 +34,7 @@ export default function FilterBar({
         backdropFilter: 'blur(4px)',
         WebkitBackdropFilter: 'blur(4px)',
         borderBottom: '1px solid #1a1a1a',
-        padding: '12px 36px',
+        padding: '12px var(--page-px)',
         display: 'flex',
         alignItems: 'center',
         gap: 12,

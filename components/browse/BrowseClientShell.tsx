@@ -53,7 +53,7 @@ export default function BrowseClientShell() {
       />
 
       {/* Result count */}
-      <div style={{ padding: '12px 36px 0' }}>
+      <div style={{ padding: '12px var(--page-px) 0' }}>
         <span className="font-mono text-muted" style={{ fontSize: 13 }}>
           Showing {filtered.length} portfolio{filtered.length !== 1 ? 's' : ''}
         </span>
@@ -65,7 +65,7 @@ export default function BrowseClientShell() {
       ) : (
         <div
           style={{
-            padding: '60px 36px',
+            padding: '60px var(--page-px)',
             textAlign: 'center',
           }}
         >

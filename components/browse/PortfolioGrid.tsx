@@ -9,7 +9,7 @@ export default function PortfolioGrid({ portfolios }: PortfolioGridProps) {
   return (
     <div
       style={{
-        padding: '32px 36px 80px',
+        padding: '32px var(--page-px) 80px',
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
         gap: 16,

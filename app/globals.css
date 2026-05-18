@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --page-px: 36px;
+  --page-px: 16px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-px: 36px;
+  }
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

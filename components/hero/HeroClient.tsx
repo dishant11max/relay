@@ -192,7 +192,7 @@ export function HeroClient() {
           <div
             className="font-display font-extrabold"
             style={{
-              fontSize: 'clamp(48px, 7vw, 84px)',
+              fontSize: 'clamp(36px, 11vw, 84px)',
               color: '#e8e8e8',
               lineHeight: 0.94,
               letterSpacing: '-0.045em',
@@ -207,11 +207,11 @@ export function HeroClient() {
           <div
             className="font-display font-extrabold"
             style={{
-              fontSize: 'clamp(48px, 7vw, 84px)',
+              fontSize: 'clamp(36px, 11vw, 84px)',
               color: '#252525',
               lineHeight: 0.94,
               letterSpacing: '-0.045em',
-              marginLeft: 52,
+              marginLeft: 'clamp(16px, 5vw, 52px)',
               marginTop: 4,
             }}
           >
@@ -224,7 +224,7 @@ export function HeroClient() {
           variants={lineVariants}
           className="font-display font-extrabold"
           style={{
-            fontSize: 'clamp(44px, 6.8vw, 90px)',
+            fontSize: 'clamp(36px, 11vw, 90px)',
             whiteSpace: 'nowrap',
             color: '#4afe80',
             lineHeight: 0.92,
@@ -279,11 +279,12 @@ export function HeroClient() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full"
         style={{ maxWidth: 440 }}
       >
         {/* Input wrapper — focus ring via inline state, no glow */}
         <div
-          className="flex transition-colors duration-150"
+          className="flex flex-wrap sm:flex-nowrap transition-colors duration-150"
           style={{
             border: `1px solid ${focused ? '#4afe80' : phase === 'error' ? 'rgba(255,77,77,0.5)' : '#a3a3a3'}`,
             background: '#050505',
@@ -293,7 +294,7 @@ export function HeroClient() {
         >
           {/* Prefix */}
           <span
-            className="flex items-center border-r border-border font-mono text-accent"
+            className="hidden sm:flex items-center border-r border-border font-mono text-accent"
             style={{
               fontSize: 14,
               height: 48,

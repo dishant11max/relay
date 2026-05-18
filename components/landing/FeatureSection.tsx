@@ -24,7 +24,7 @@ function TabConnect() {
   ]
 
   return (
-    <div className="flex w-full border border-border" style={{ minHeight: 320 }}>
+    <div className="flex flex-col md:flex-row w-full border border-border" style={{ minHeight: 320 }}>
       {/* Left — OAuth card */}
       <div
         className="flex flex-col justify-center border-r border-border bg-surface"
@@ -59,8 +59,8 @@ function TabConnect() {
 
       {/* Right — What Relay reads */}
       <div
-        className="flex flex-col justify-center"
-        style={{ flex: 1, padding: '40px 36px', background: '#090909' }}
+        className="flex flex-col justify-center border-t md:border-t-0 md:border-l border-border"
+        style={{ flex: 1, padding: 'clamp(24px, 5vw, 40px) clamp(20px, 5vw, 36px)', background: '#090909' }}
       >
         <p className="mb-6 font-mono text-[12px] tracking-[0.18em]" style={{ color: '#737373' }}>
           WHAT RELAY READS FROM YOUR ACCOUNT
@@ -114,7 +114,7 @@ function TabAnalyze() {
   ]
 
   return (
-    <div className="flex w-full border border-border" style={{ minHeight: 320 }}>
+    <div className="flex flex-col md:flex-row w-full border border-border" style={{ minHeight: 320 }}>
       {/* Left — File tree */}
       <div
         className="border-r border-border bg-surface"
@@ -154,7 +154,7 @@ function TabAnalyze() {
       </div>
 
       {/* Right — AI analysis */}
-      <div style={{ flex: 1, background: '#090909' }}>
+      <div className="border-t md:border-t-0 md:border-l border-border" style={{ flex: 1, background: '#090909' }}>
         {/* Top: summary block */}
         <div className="border-b border-[#141414] p-6">
           <p className="mb-4 font-mono text-[12px] tracking-[0.14em]" style={{ color: '#737373' }}>AI ANALYSIS SUMMARY</p>
@@ -202,7 +202,7 @@ function TabAnalyze() {
 ───────────────────────────────────────────────────────────── */
 function TabGenerate() {
   return (
-    <div className="flex w-full border border-border" style={{ minHeight: 320 }}>
+    <div className="flex flex-col md:flex-row w-full border border-border" style={{ minHeight: 320 }}>
       {/* Left: resume preview */}
       <div
         className="flex flex-col bg-surface"
@@ -238,8 +238,8 @@ function TabGenerate() {
 
       {/* Right: ATS panel */}
       <div
-        className="flex flex-col"
-        style={{ flex: 1, padding: '28px', background: '#090909' }}
+        className="flex flex-col border-t md:border-t-0 md:border-l border-border"
+        style={{ flex: 1, padding: 'clamp(20px, 5vw, 28px)', background: '#090909' }}
       >
         <p className="mb-1 font-mono text-[12px] tracking-[0.14em]" style={{ color: '#737373' }}>ATS ANALYSIS</p>
         <div className="mt-4 flex items-baseline gap-1">
@@ -289,7 +289,7 @@ function TabGenerate() {
 ───────────────────────────────────────────────────────────── */
 function TabExport() {
   return (
-    <div className="flex w-full border border-border" style={{ minHeight: 320 }}>
+    <div className="flex flex-col md:flex-row w-full border border-border" style={{ minHeight: 320 }}>
       {/* Left — format selection */}
       <div
         className="flex flex-col border-r border-border bg-surface"
@@ -336,7 +336,7 @@ function TabExport() {
       </div>
 
       {/* Right — portfolio live panel */}
-      <div style={{ flex: 1, background: '#090909', padding: '28px' }}>
+      <div className="border-t md:border-t-0 md:border-l border-border" style={{ flex: 1, background: '#090909', padding: 'clamp(20px, 5vw, 28px)' }}>
         <p className="mb-5 font-mono text-[12px] tracking-[0.14em]" style={{ color: '#737373' }}>YOUR PORTFOLIO IS LIVE</p>
 
         {/* Mock browser bar */}
@@ -408,7 +408,7 @@ export default function FeatureSection() {
 
       <h2
         className="font-display font-extrabold text-body"
-        style={{ fontSize: 52, letterSpacing: '-0.025em', lineHeight: 1.08 }}
+        style={{ fontSize: 'clamp(32px, 8vw, 52px)', letterSpacing: '-0.025em', lineHeight: 1.08 }}
       >
         See everything, not just a repo list.
       </h2>
@@ -420,10 +420,10 @@ export default function FeatureSection() {
         Relay reads your commits, README quality, stack diversity, and contribution patterns.
       </p>
 
-      {/* Tab nav — CSS grid guarantees even spacing */}
+      {/* Tab nav — CSS flex for scroll on mobile, grid on desktop */}
       <div
-        className="mb-6 grid"
-        style={{ gridTemplateColumns: '1fr auto 1fr auto 1fr auto 1fr' }}
+        className="mb-6 flex md:grid overflow-x-auto md:overflow-visible gap-6 md:gap-0"
+        style={{ gridTemplateColumns: '1fr auto 1fr auto 1fr auto 1fr', paddingBottom: 12 }}
       >
         {TABS.map(({ id, num, label }, i) => (
           <Fragment key={id}>
@@ -461,7 +461,7 @@ export default function FeatureSection() {
               </span>
             </button>
             {i < TABS.length - 1 && (
-              <div className="h-px w-full self-start" style={{ background: '#141414', marginTop: 14 }} />
+              <div className="hidden md:block h-px w-full self-start" style={{ background: '#141414', marginTop: 14 }} />
             )}
           </Fragment>
         ))}

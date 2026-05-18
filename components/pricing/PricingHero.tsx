@@ -11,7 +11,7 @@ export default function PricingHero({ billing, setBilling }: PricingHeroProps) {
   return (
     <div
       style={{
-        padding: '80px 36px 0',
+        padding: '80px var(--page-px) 0',
         textAlign: 'center',
       }}
     >
@@ -27,7 +27,7 @@ export default function PricingHero({ billing, setBilling }: PricingHeroProps) {
       <h1
         className="font-display font-extrabold"
         style={{
-          fontSize: 56,
+          fontSize: 'clamp(40px, 10vw, 56px)',
           letterSpacing: '-0.03em',
           lineHeight: 1.05,
           marginBottom: 20,

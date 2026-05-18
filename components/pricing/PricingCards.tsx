@@ -68,7 +68,7 @@ export default function PricingCards({ billing }: PricingCardsProps) {
   return (
     <div
       style={{
-        padding: '48px 36px 80px',
+        padding: '48px var(--page-px) 80px',
         maxWidth: 860,
         margin: '0 auto',
         display: 'flex',

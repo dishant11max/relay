@@ -40,12 +40,12 @@ function AnimatedStat({
   }, [started, value])
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center py-0" style={{ padding: '0 48px' }}>
+    <div className="flex flex-1 flex-col items-center justify-center py-6 md:py-0 md:px-12">
       <div className="flex items-baseline gap-0 leading-none">
-        <span className="font-display text-[56px] font-extrabold text-body" style={{ lineHeight: 1 }}>
+        <span className="font-display font-extrabold text-body" style={{ fontSize: 'clamp(40px, 10vw, 56px)', lineHeight: 1 }}>
           {value >= 1000 ? display.toLocaleString() : display}
         </span>
-        <span className="font-display text-[56px] font-extrabold text-accent" style={{ lineHeight: 1 }}>
+        <span className="font-display font-extrabold text-accent" style={{ fontSize: 'clamp(40px, 10vw, 56px)', lineHeight: 1 }}>
           {suffix}
         </span>
       </div>
