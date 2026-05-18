@@ -253,7 +253,7 @@ export default function ResumeGenerator({ username, githubToken, data }: Props) 
           >
             <span className="font-mono text-accent" style={{ fontSize: 11 }}>✦</span>
             <span className="font-mono text-accent" style={{ fontSize: 11 }}>
-              Open Overleaf → Jake's Template → replace everything between \begin&#123;document&#125; and \end&#123;document&#125; with this code → Compile.
+              Copy all → Overleaf → New Project → Blank → paste everything → hit Recompile. Done.
             </span>
           </div>
 
