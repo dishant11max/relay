@@ -4,6 +4,16 @@ import Groq from 'groq-sdk'
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY ?? '' })
 
 export async function POST(req: NextRequest) {
+  // Prevent API leaks by validating request origin
+  const origin = req.headers.get('origin') || req.headers.get('referer') || ''
+  
+  if (process.env.NODE_ENV === 'production' && !origin.includes('relay-psi-one.vercel.app')) {
+    return NextResponse.json(
+      { error: 'Unauthorized request origin. API usage is restricted to the Relay client.' },
+      { status: 403 }
+    )
+  }
+
   // Validate request
   let body: any
   try {
