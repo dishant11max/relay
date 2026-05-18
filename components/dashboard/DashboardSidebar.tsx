@@ -3,19 +3,20 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 
-type Section = 'overview' | 'repos' | 'activity'
+type Section = 'overview' | 'repos' | 'activity' | 'resume'
 
 const NAV_ITEMS: { label: string; section: Section; icon: string }[] = [
   { label: 'OVERVIEW',  section: 'overview',  icon: '◈' },
   { label: 'REPOS',     section: 'repos',     icon: '⬡' },
   { label: 'ACTIVITY',  section: 'activity',  icon: '⌁' },
+  { label: 'RESUME',    section: 'resume',    icon: '◻' },
 ]
 
 interface Props {
   username: string
   avatarUrl: string | null
   activeSection: Section
-  setActiveSection: (s: Section) => void
+  setActiveSection: (s: string) => void
 }
 
 export default function DashboardSidebar({

@@ -6,6 +6,7 @@ import StatsRow from './StatsRow'
 import CommitGraph from './CommitGraph'
 import RepoList from './RepoList'
 import ActivityFeed from './ActivityFeed'
+import ResumeGenerator from './ResumeGenerator'
 
 interface GitHubRepo {
   id: number
@@ -52,11 +53,11 @@ interface Props {
   githubToken: string | null
 }
 
-export default function DashboardClient({ username, avatarUrl, githubToken }: Props) {
+export default function DashboardClient({ userId, username, avatarUrl, githubToken }: Props) {
   const [data, setData] = useState<DashboardData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [activeSection, setActiveSection] = useState<'overview' | 'repos' | 'activity'>('overview')
+  const [activeSection, setActiveSection] = useState<'overview' | 'repos' | 'activity' | 'resume'>('overview')
 
   const fetchGitHubData = useCallback(async () => {
     if (!githubToken) {
@@ -159,7 +160,7 @@ export default function DashboardClient({ username, avatarUrl, githubToken }: Pr
         username={username}
         avatarUrl={avatarUrl}
         activeSection={activeSection}
-        setActiveSection={setActiveSection}
+        setActiveSection={setActiveSection as (s: string) => void}
       />
 
       {/* Main content */}
@@ -187,6 +188,7 @@ export default function DashboardClient({ username, avatarUrl, githubToken }: Pr
               {activeSection === 'overview' && `Good work, @${username}.`}
               {activeSection === 'repos' && 'Your repositories.'}
               {activeSection === 'activity' && 'Commit activity.'}
+              {activeSection === 'resume' && 'Resume Generator.'}
             </h1>
           </div>
 
@@ -245,6 +247,13 @@ export default function DashboardClient({ username, avatarUrl, githubToken }: Pr
                 <CommitGraph events={data.events} username={username} />
                 <ActivityFeed events={data.events} fullWidth />
               </>
+            )}
+            {activeSection === 'resume' && (
+              <ResumeGenerator
+                username={username}
+                githubToken={githubToken}
+                data={data}
+              />
             )}
           </>
         )}
