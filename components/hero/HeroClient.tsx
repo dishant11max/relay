@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { TerminalLog } from './TerminalLog'
+import { TerminalLog, type AnalysisResult } from './TerminalLog'
 import { ResultCard } from './ResultCard'
 
 type Phase = 'idle' | 'scanning' | 'result' | 'error'
@@ -92,8 +92,9 @@ function useMagnetic(strength = 0.35) {
 /* ─── Component ──────────────────────────────────────────── */
 export function HeroClient() {
   const [input,    setInput]    = useState('')
-  const [phase,    setPhase]    = useState<Phase>('idle')
+  const [phase,    setPhase]    = useState<'idle' | 'scanning' | 'result' | 'error'>('idle')
   const [errMsg,   setErrMsg]   = useState('')
+  const [result,   setResult]   = useState<AnalysisResult | null>(null)
   const [focused,  setFocused]  = useState(false)
   const [mouse,    setMouse]    = useState({ x: 0.5, y: 0.5 })
   const [hovered,  setHovered]  = useState(false)
@@ -144,6 +145,7 @@ export function HeroClient() {
     setPhase('idle')
     setInput('')
     setErrMsg('')
+    setResult(null)
     setTimeout(() => inputRef.current?.focus(), 50)
   }
 
@@ -356,10 +358,22 @@ export function HeroClient() {
         {/* Phase states — AnimatePresence */}
         <AnimatePresence mode="wait">
           {phase === 'scanning' && (
-            <TerminalLog key="scanning" onDone={() => setPhase('result')} />
+            <TerminalLog
+              key="scanning"
+              username={input.trim()}
+              onDone={(res, err) => {
+                if (err || !res) {
+                  setErrMsg(err ?? 'Could not analyze profile.')
+                  setPhase('error')
+                } else {
+                  setResult(res)
+                  setPhase('result')
+                }
+              }}
+            />
           )}
-          {phase === 'result' && (
-            <ResultCard key="result" username={input} />
+          {phase === 'result' && result && (
+            <ResultCard key="result" result={result} />
           )}
           {phase === 'error' && (
             <motion.div

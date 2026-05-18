@@ -215,10 +215,38 @@ export default function DashboardClient({ userId, username, avatarUrl, githubTok
         {/* Error state */}
         {error && (
           <div
-            className="border border-danger font-mono text-danger"
-            style={{ padding: '16px 20px', fontSize: 13 }}
+            className="border font-mono"
+            style={{
+              padding: '20px 24px',
+              borderColor: 'rgba(255,77,77,0.35)',
+              background: 'rgba(255,77,77,0.04)',
+            }}
           >
-            {error}
+            <p className="text-[12px] tracking-[0.14em] mb-2" style={{ color: 'rgba(255,77,77,0.5)' }}>ERROR</p>
+            <p className="text-[14px] mb-4" style={{ color: 'rgba(255,77,77,0.85)' }}>{error}</p>
+            {error.includes('token') || error.includes('sign') ? (
+              <a
+                href="/sign-in"
+                className="font-mono text-[13px] font-bold bg-accent text-black inline-block"
+                style={{ padding: '8px 18px' }}
+              >
+                RECONNECT GITHUB →
+              </a>
+            ) : (
+              <button
+                onClick={() => { setError(null); setLoading(true); fetchGitHubData() }}
+                className="font-mono text-[13px] font-bold border"
+                style={{
+                  padding: '8px 18px',
+                  borderColor: 'rgba(255,77,77,0.4)',
+                  color: 'rgba(255,77,77,0.8)',
+                  background: 'transparent',
+                  cursor: 'pointer',
+                }}
+              >
+                RETRY
+              </button>
+            )}
           </div>
         )}
 
@@ -293,8 +321,14 @@ function SkeletonBlock({ w = '100%', h = 20 }: { w?: string | number; h?: number
 function DashboardSkeleton() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {/* Stats row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+      {/* Stats row — responsive 2-col on mobile */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
+          gap: 16,
+        }}
+      >
         {[1, 2, 3, 4].map((i) => (
           <SkeletonBlock key={i} h={72} />
         ))}
