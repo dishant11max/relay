@@ -49,6 +49,12 @@ export default async function Navbar() {
             >
               PRICING
             </a>
+            <a
+              href="/about"
+              className="hidden sm:block font-mono text-[13px] md:text-[14px] tracking-wide text-muted-2 transition-colors hover:text-body"
+            >
+              ABOUT
+            </a>
             
             {user && username ? (
               <NavUserMenu username={username} avatarUrl={avatarUrl} />

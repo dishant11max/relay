@@ -174,25 +174,14 @@ export default function DashboardClient({ userId, username, avatarUrl, githubTok
             maxWidth: '100%',
           }}
         >
-        {/* Page header */}
-        <div className="mb-8 flex items-end justify-between">
-          <div>
-            <p
-              className="font-mono tracking-[0.16em] text-accent"
-              style={{ fontSize: 10, marginBottom: 6 }}
-            >
-              {activeSection.toUpperCase()}
-            </p>
-            <h1
-              className="font-display font-extrabold text-body"
-              style={{ fontSize: 'clamp(20px, 4vw, 30px)', letterSpacing: '-0.025em', lineHeight: 1 }}
-            >
-              {activeSection === 'overview' && `Good work, @${username}.`}
-              {activeSection === 'repos' && 'Your repositories.'}
-              {activeSection === 'activity' && 'Commit activity.'}
-              {activeSection === 'resume' && 'Resume Generator.'}
-            </h1>
-          </div>
+        {/* Exit Dashboard / Connected Status */}
+        <div className="mb-6 flex items-center justify-between">
+          <a href="/" className="flex items-center gap-2 text-muted-2 hover:text-body transition-colors">
+            <div className="flex h-5 w-5 items-center justify-center bg-accent">
+              <span className="font-mono text-[12px] font-black text-black">R</span>
+            </div>
+            <span className="font-mono text-[11px] tracking-[0.08em] mt-0.5 font-bold">EXIT DASHBOARD</span>
+          </a>
 
           {!loading && !error && data && (
             <div className="flex items-center gap-2">
@@ -210,6 +199,25 @@ export default function DashboardClient({ userId, username, avatarUrl, githubTok
               </span>
             </div>
           )}
+        </div>
+
+        {/* Page header */}
+        <div className="mb-8">
+          <p
+            className="font-mono tracking-[0.16em] text-accent"
+            style={{ fontSize: 10, marginBottom: 6 }}
+          >
+            {activeSection.toUpperCase()}
+          </p>
+          <h1
+            className="font-display font-extrabold text-body"
+            style={{ fontSize: 'clamp(20px, 4vw, 30px)', letterSpacing: '-0.025em', lineHeight: 1 }}
+          >
+            {activeSection === 'overview' && `Good work, @${username}.`}
+            {activeSection === 'repos' && 'Your repositories.'}
+            {activeSection === 'activity' && 'Commit activity.'}
+            {activeSection === 'resume' && 'Resume Generator.'}
+          </h1>
         </div>
 
         {/* Error state */}

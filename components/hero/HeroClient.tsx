@@ -30,9 +30,9 @@ const LABELS = [
 
 /* ─── Feature bullets ─────────────────────────────────────── */
 const BULLETS = [
-  { text: 'Syncs every new repo automatically',  key: 'sync' },
-  { text: 'ATS score on every resume export',    key: 'ats'  },
-  { text: 'Twitter thread generator built-in',   key: 'thread' },
+  { text: 'Portfolio and resume generated from your repositories',  key: 'sync' },
+  { text: 'ATS-optimized resume export in under 60 seconds',        key: 'ats'  },
+  { text: 'Shareable portfolio URL — no configuration required',    key: 'thread' },
 ]
 
 /* ─── Stagger variants ────────────────────────────────────── */
@@ -152,10 +152,8 @@ export function HeroClient() {
   /* ─── Left column ─────────────────────────────── */
   const leftCol = (
     <div
-      className="flex flex-col justify-center w-full"
+      className="flex flex-col justify-center w-full md:w-[56%] shrink-0 border-b md:border-b-0 md:border-r border-[#141414]"
       style={{
-        flex: '0 0 56%',
-        borderRight: '1px solid #141414',
         padding: 'clamp(40px, 8vw, 80px) clamp(24px, 5vw, 64px) clamp(40px, 8vw, 80px) var(--page-px)',
       }}
     >
@@ -192,9 +190,8 @@ export function HeroClient() {
         {/* YOUR GITHUB. — full opacity, primary weight */}
         <motion.div variants={lineVariants} style={{ overflow: 'hidden' }}>
           <div
-            className="font-display font-extrabold"
+            className="font-display font-extrabold text-[38px] sm:text-[clamp(52px,7.5vw,86px)]"
             style={{
-              fontSize: 'clamp(36px, 11vw, 84px)',
               color: '#e8e8e8',
               lineHeight: 0.94,
               letterSpacing: '-0.045em',
@@ -207,9 +204,8 @@ export function HeroClient() {
         {/* YOUR STORY. — dimmed, creates depth */}
         <motion.div variants={lineVariants} style={{ overflow: 'hidden' }}>
           <div
-            className="font-display font-extrabold"
+            className="font-display font-extrabold text-[38px] sm:text-[clamp(52px,7.5vw,86px)]"
             style={{
-              fontSize: 'clamp(36px, 11vw, 84px)',
               color: '#252525',
               lineHeight: 0.94,
               letterSpacing: '-0.045em',
@@ -224,9 +220,8 @@ export function HeroClient() {
         {/* YOUR JOB. — accent, largest, char-by-char */}
         <motion.div
           variants={lineVariants}
-          className="font-display font-extrabold"
+          className="font-display font-extrabold text-[44px] sm:text-[clamp(44px,6.5vw,88px)]"
           style={{
-            fontSize: 'clamp(36px, 11vw, 90px)',
             whiteSpace: 'nowrap',
             color: '#4afe80',
             lineHeight: 0.92,
@@ -430,6 +425,18 @@ export function HeroClient() {
           </motion.div>
         ))}
       </motion.div>
+
+      {/* ── Mobile-only stats strip ── */}
+      <div
+        className="flex sm:hidden justify-center gap-4 font-mono text-[10px] mt-5"
+        style={{ color: '#3a3a3a' }}
+      >
+        <span>847 commits</span>
+        <span style={{ color: '#222' }}>·</span>
+        <span>34 repos</span>
+        <span style={{ color: '#222' }}>·</span>
+        <span>94% ATS</span>
+      </div>
     </div>
   )
 

@@ -12,16 +12,18 @@ export const dynamic = 'force-dynamic'
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-bg">
+    <>
       <BackgroundSystem />
-      <Navbar />
-      <HeroSection />
-      <SocialProofTicker />
-      <FeatureSection />
-      <ChaosClarity />
-      <StatsBar />
-      <FinalCTA />
-      <Footer />
-    </main>
+      <main className="relative z-10 min-h-screen overflow-x-hidden">
+        <Navbar />
+        <HeroSection />
+        <SocialProofTicker />
+        <FeatureSection />
+        <ChaosClarity />
+        <StatsBar />
+        <FinalCTA />
+        <Footer />
+      </main>
+    </>
   )
 }

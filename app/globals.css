@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --page-px: 16px;
+  --page-px: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   :root {
     --page-px: 36px;
   }
@@ -53,6 +53,10 @@ input:focus { outline: none; }
 @keyframes shimmer {
   0%   { transform: translateX(-100%); }
   100% { transform: translateX(200%); }
+}
+@keyframes orbPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.08); }
 }
 
 .cta-btn {

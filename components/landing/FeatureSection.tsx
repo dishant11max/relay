@@ -24,11 +24,11 @@ function TabConnect() {
   ]
 
   return (
-    <div className="flex flex-col md:flex-row w-full border border-border" style={{ minHeight: 320 }}>
+    <div className="flex flex-col md:flex-row w-full border border-border" style={{ minHeight: 320, alignItems: 'stretch' }}>
       {/* Left — OAuth card */}
       <div
-        className="flex flex-col justify-center border-r border-border bg-surface"
-        style={{ flex: '0 0 42%', padding: '40px 36px' }}
+        className="flex flex-col justify-between border-b md:border-b-0 md:border-r border-border bg-surface"
+        style={{ flex: '0 0 42%', padding: '40px 36px', minHeight: 320, alignSelf: 'stretch' }}
       >
         <div className="mb-6 flex justify-center">
           <svg viewBox="0 0 24 24" width="44" height="44" fill="#e8e8e8">
@@ -59,8 +59,8 @@ function TabConnect() {
 
       {/* Right — What Relay reads */}
       <div
-        className="flex flex-col justify-center border-t md:border-t-0 md:border-l border-border"
-        style={{ flex: 1, padding: 'clamp(24px, 5vw, 40px) clamp(20px, 5vw, 36px)', background: '#090909' }}
+        className="flex flex-col justify-between bg-[#090909]"
+        style={{ flex: 1, padding: 'clamp(24px, 5vw, 40px) clamp(20px, 5vw, 36px)', minHeight: 320, alignSelf: 'stretch' }}
       >
         <p className="mb-6 font-mono text-[12px] tracking-[0.18em]" style={{ color: '#737373' }}>
           WHAT RELAY READS FROM YOUR ACCOUNT
@@ -117,7 +117,7 @@ function TabAnalyze() {
     <div className="flex flex-col md:flex-row w-full border border-border" style={{ minHeight: 320 }}>
       {/* Left — File tree */}
       <div
-        className="border-r border-border bg-surface"
+        className="border-b md:border-b-0 md:border-r border-border bg-surface"
         style={{ flex: '0 0 40%', padding: '28px 24px' }}
       >
         <p className="mb-4 font-mono text-[12px] tracking-[0.14em] text-muted-2">REPO / dishant11max</p>
@@ -153,8 +153,7 @@ function TabAnalyze() {
         ))}
       </div>
 
-      {/* Right — AI analysis */}
-      <div className="border-t md:border-t-0 md:border-l border-border" style={{ flex: 1, background: '#090909' }}>
+      <div className="bg-[#090909]" style={{ flex: 1 }}>
         {/* Top: summary block */}
         <div className="border-b border-[#141414] p-6">
           <p className="mb-4 font-mono text-[12px] tracking-[0.14em]" style={{ color: '#737373' }}>AI ANALYSIS SUMMARY</p>
@@ -205,8 +204,8 @@ function TabGenerate() {
     <div className="flex flex-col md:flex-row w-full border border-border" style={{ minHeight: 320 }}>
       {/* Left: resume preview */}
       <div
-        className="flex flex-col bg-surface"
-        style={{ flex: '0 0 55%', padding: '28px', borderRight: '1px solid #1a1a1a' }}
+        className="flex flex-col bg-surface border-b md:border-b-0 md:border-r border-[#1a1a1a]"
+        style={{ flex: '0 0 55%', padding: '28px' }}
       >
         <div className="mb-4">
           <div className="font-mono text-[21px] font-bold text-body">Dishant Sharma</div>
@@ -238,8 +237,8 @@ function TabGenerate() {
 
       {/* Right: ATS panel */}
       <div
-        className="flex flex-col border-t md:border-t-0 md:border-l border-border"
-        style={{ flex: 1, padding: 'clamp(20px, 5vw, 28px)', background: '#090909' }}
+        className="flex flex-col bg-[#090909]"
+        style={{ flex: 1, padding: 'clamp(20px, 5vw, 28px)' }}
       >
         <p className="mb-1 font-mono text-[12px] tracking-[0.14em]" style={{ color: '#737373' }}>ATS ANALYSIS</p>
         <div className="mt-4 flex items-baseline gap-1">
@@ -292,7 +291,7 @@ function TabExport() {
     <div className="flex flex-col md:flex-row w-full border border-border" style={{ minHeight: 320 }}>
       {/* Left — format selection */}
       <div
-        className="flex flex-col border-r border-border bg-surface"
+        className="flex flex-col border-b md:border-b-0 md:border-r border-border bg-surface"
         style={{ flex: '0 0 42%', padding: '28px 28px' }}
       >
         <p className="mb-5 font-mono text-[12px] tracking-[0.14em] text-muted-2">EXPORT FORMAT</p>
@@ -335,8 +334,7 @@ function TabExport() {
         </a>
       </div>
 
-      {/* Right — portfolio live panel */}
-      <div className="border-t md:border-t-0 md:border-l border-border" style={{ flex: 1, background: '#090909', padding: 'clamp(20px, 5vw, 28px)' }}>
+      <div className="bg-[#090909]" style={{ flex: 1, padding: 'clamp(20px, 5vw, 28px)' }}>
         <p className="mb-5 font-mono text-[12px] tracking-[0.14em]" style={{ color: '#737373' }}>YOUR PORTFOLIO IS LIVE</p>
 
         {/* Mock browser bar */}
@@ -420,16 +418,13 @@ export default function FeatureSection() {
         Relay reads your commits, README quality, stack diversity, and contribution patterns.
       </p>
 
-      {/* Tab nav — CSS flex for scroll on mobile, grid on desktop */}
-      <div
-        className="mb-6 flex md:grid overflow-x-auto md:overflow-visible gap-6 md:gap-0"
-        style={{ gridTemplateColumns: '1fr auto 1fr auto 1fr auto 1fr', paddingBottom: 12 }}
-      >
+      {/* Tab nav — 2×2 grid on mobile, horizontal flex on md+ */}
+      <div className="mb-6 grid grid-cols-2 gap-4 md:flex md:w-full md:items-start md:justify-between md:gap-0">
         {TABS.map(({ id, num, label }, i) => (
           <Fragment key={id}>
             <button
               onClick={() => setActive(id)}
-              className="flex flex-col items-center gap-2 py-1"
+              className="flex flex-col items-center gap-2 py-2 flex-shrink-0"
               aria-selected={active === id}
             >
               <div
@@ -461,7 +456,7 @@ export default function FeatureSection() {
               </span>
             </button>
             {i < TABS.length - 1 && (
-              <div className="hidden md:block h-px w-full self-start" style={{ background: '#141414', marginTop: 14 }} />
+              <div className="hidden md:block h-px flex-1 self-start" style={{ background: '#141414', marginTop: 14, marginLeft: 16, marginRight: 16 }} />
             )}
           </Fragment>
         ))}

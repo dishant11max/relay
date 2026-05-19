@@ -30,7 +30,7 @@ function Item({ user, co, role, ats }: (typeof ITEMS)[0]) {
         {ats}%
       </span>
       {/* Username */}
-      <span className="font-mono" style={{ fontSize: 14, color: '#a3a3a3' }}>
+      <span className="font-mono" style={{ fontSize: 14, color: '#2a2a2a' }}>
         {user}
       </span>
       {/* Arrow */}
@@ -38,11 +38,11 @@ function Item({ user, co, role, ats }: (typeof ITEMS)[0]) {
         &#8594;
       </span>
       {/* Role @ Company */}
-      <span className="font-mono" style={{ fontSize: 14, color: '#a3a3a3' }}>
+      <span className="font-mono" style={{ fontSize: 14, color: '#2a2a2a' }}>
         {role}
       </span>
       <span className="font-mono text-[12px]" style={{ color: '#1e1e1e' }}>
-        @&nbsp;<span style={{ color: '#2e2e2e' }}>{co}</span>
+        @&nbsp;<span style={{ color: '#3a3a3a' }}>{co}</span>
       </span>
       {/* Dot separator */}
       <span className="text-[#161616]">·</span>

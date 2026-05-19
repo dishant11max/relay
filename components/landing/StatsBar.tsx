@@ -40,7 +40,7 @@ function StatItem({
 }) {
   const value = useCountUp(target, 1800, triggered)
   return (
-    <div className="flex flex-1 flex-col items-center justify-center py-6 md:py-0 md:px-12">
+    <div className="flex flex-col items-center justify-center py-6 sm:py-0 sm:px-12 w-full">
       <div className="flex items-baseline gap-0 leading-none">
         <span
           className="font-display font-extrabold text-body"
@@ -80,14 +80,14 @@ export default function StatsBar() {
   return (
     <div
       ref={ref}
-      className="flex flex-col md:flex-row border-t border-border"
-      style={{ padding: '48px var(--page-px)' }}
+      className="flex flex-col sm:flex-row border-t border-border py-4 sm:py-12"
+      style={{ paddingLeft: 'var(--page-px)', paddingRight: 'var(--page-px)' }}
     >
       {STATS.map((s, i) => (
-        <div key={s.label} className="flex flex-1 flex-col md:flex-row">
+        <div key={s.label} className={`flex flex-1 flex-col sm:flex-row ${i < STATS.length - 1 ? 'border-b sm:border-b-0 border-border' : ''}`}>
           <StatItem {...s} triggered={triggered} />
           {i < STATS.length - 1 && (
-            <div className="h-px md:h-full md:w-px bg-border self-stretch mx-8 md:mx-0 my-4 md:my-0" />
+            <div className="hidden sm:block h-full w-px bg-border self-stretch" />
           )}
         </div>
       ))}
