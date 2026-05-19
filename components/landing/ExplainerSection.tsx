@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 
 const STEPS = [
   {
@@ -20,12 +20,12 @@ const STEPS = [
   },
 ]
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 },
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as any, delay: i * 0.1 },
   }),
 }
 
