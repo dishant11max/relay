@@ -30,23 +30,29 @@ export default function Footer() {
       className="relative overflow-hidden border-t border-border"
       style={{ padding: '36px var(--page-px) 24px' }}
     >
-      {/* Watermark */}
-      <div
-        className="pointer-events-none absolute select-none font-display font-extrabold"
+      {/* ASCII Watermark */}
+      <pre
+        aria-hidden="true"
         style={{
-          fontSize: 160,
-          color: 'rgba(255,255,255,0.018)',
-          bottom: -20,
+          fontFamily: 'var(--font-mono)',
+          color: 'rgba(255,255,255,0.015)',
+          fontSize: 10,
+          lineHeight: 1.2,
+          position: 'absolute',
+          bottom: -8,
           left: '50%',
           transform: 'translateX(-50%)',
-          whiteSpace: 'nowrap',
-          letterSpacing: '-0.04em',
+          whiteSpace: 'pre',
+          pointerEvents: 'none',
           userSelect: 'none',
+          overflow: 'hidden',
         }}
-        aria-hidden="true"
-      >
-        RELAY
-      </div>
+      >{` ██████╗ ███████╗██╗      █████╗ ██╗   ██╗
+ ██╔══██╗██╔════╝██║     ██╔══██╗╚██╗ ██╔╝
+ ██████╔╝█████╗  ██║     ███████║ ╚████╔╝ 
+ ██╔══██╗██╔══╝  ██║     ██╔══██║  ╚██╔╝  
+ ██║  ██║███████╗███████╗██║  ██║   ██║   
+ ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝   ╚═╝  `}</pre>
 
       {/* Main row */}
       <div className="relative flex flex-col items-center gap-5 md:flex-row md:items-center md:justify-between">

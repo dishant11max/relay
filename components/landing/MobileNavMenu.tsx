@@ -74,6 +74,9 @@ export default function MobileNavMenu({ isSignedIn }: Props) {
               <Link href="/about" onClick={() => setOpen(false)} className="text-body hover:text-accent transition-colors">
                 ABOUT
               </Link>
+              <Link href="/stats" onClick={() => setOpen(false)} className="text-body hover:text-accent transition-colors">
+                STATS
+              </Link>
               {isSignedIn ? (
                 <>
                   <Link href="/dashboard" onClick={() => setOpen(false)} className="text-body hover:text-accent transition-colors">

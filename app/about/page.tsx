@@ -2,7 +2,7 @@ import BackgroundSystem from '@/components/landing/BackgroundSystem'
 import Navbar from '@/components/landing/Navbar'
 import Footer from '@/components/landing/Footer'
 import AboutHero from '@/components/about/AboutHero'
-import WhatIsRelay from '@/components/about/WhatIsRelay'
+import TheProblem from '@/components/about/TheProblem'
 import HowItWorks from '@/components/about/HowItWorks'
 import AboutCTA from '@/components/about/AboutCTA'
 import type { Metadata } from 'next'
@@ -19,7 +19,7 @@ export default function AboutPage() {
       <main className="relative z-10 min-h-screen overflow-x-hidden">
         <Navbar />
         <AboutHero />
-        <WhatIsRelay />
+        <TheProblem />
         <HowItWorks />
         <AboutCTA />
         <Footer />

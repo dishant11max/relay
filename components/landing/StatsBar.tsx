@@ -1,12 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
-const STATS = [
-  { target: 12000, suffix: '+', label: 'Portfolios generated' },
-  { target: 94,    suffix: '%', label: 'Average ATS score'    },
-  { target: 60,    suffix: 's', label: 'Time to first export' },
-]
-
 function useCountUp(target: number, duration = 1800, trigger: boolean) {
   const [value, setValue] = useState(0)
   useEffect(() => {
@@ -27,38 +21,84 @@ function useCountUp(target: number, duration = 1800, trigger: boolean) {
   return value
 }
 
-function StatItem({
+function StatCard({
+  filename,
+  badge,
+  rows,
+  triggered,
+}: {
+  filename: string
+  badge: string
+  rows: { key: string; value: string | number; isCountUp?: boolean; target?: number; suffix?: string }[]
+  triggered: boolean
+}) {
+  return (
+    <div
+      style={{
+        background: '#0c0c0c',
+        border: '1px solid #1a1a1a',
+        padding: '20px 24px',
+        flex: 1,
+        minWidth: 0,
+      }}
+    >
+      {/* Top row */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+        <span
+          className="font-mono text-accent uppercase"
+          style={{ fontSize: 9, letterSpacing: '0.14em' }}
+        >
+          {filename}
+        </span>
+        <span
+          className="font-mono text-muted"
+          style={{
+            fontSize: 8,
+            background: '#111',
+            border: '1px solid #1a1a1a',
+            padding: '2px 6px',
+          }}
+        >
+          {badge}
+        </span>
+      </div>
+
+      {/* Key-value rows */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {rows.map((row) => (
+          <div key={row.key} style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <span className="font-mono text-muted-2" style={{ fontSize: 10 }}>
+              {row.key}
+            </span>
+            <span className="font-mono text-body font-bold" style={{ fontSize: 11 }}>
+              {row.isCountUp && row.target !== undefined ? (
+                <CountUpValue target={row.target} suffix={row.suffix ?? ''} triggered={triggered} />
+              ) : (
+                row.value
+              )}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function CountUpValue({
   target,
   suffix,
-  label,
   triggered,
 }: {
   target: number
   suffix: string
-  label: string
   triggered: boolean
 }) {
   const value = useCountUp(target, 1800, triggered)
   return (
-    <div className="flex flex-col items-center justify-center py-6 sm:py-0 sm:px-12 w-full">
-      <div className="flex items-baseline gap-0 leading-none">
-        <span
-          className="font-display font-extrabold text-body"
-          style={{ fontSize: 'clamp(40px, 10vw, 56px)', lineHeight: 1 }}
-        >
-          {target >= 1000 ? value.toLocaleString() : value}
-        </span>
-        <span
-          className="font-display font-extrabold text-accent"
-          style={{ fontSize: 'clamp(40px, 10vw, 56px)', lineHeight: 1 }}
-        >
-          {suffix}
-        </span>
-      </div>
-      <p className="mt-2 font-mono text-[14px] tracking-[0.06em] text-muted-2">
-        {label}
-      </p>
-    </div>
+    <>
+      {target >= 1000 ? value.toLocaleString() : value}
+      {suffix}
+    </>
   )
 }
 
@@ -80,17 +120,46 @@ export default function StatsBar() {
   return (
     <div
       ref={ref}
-      className="flex flex-col sm:flex-row border-t border-border py-4 sm:py-12"
-      style={{ paddingLeft: 'var(--page-px)', paddingRight: 'var(--page-px)' }}
+      className="border-t border-border"
+      style={{
+        paddingLeft: 'var(--page-px)',
+        paddingRight: 'var(--page-px)',
+        paddingTop: 'var(--page-px)',
+        paddingBottom: 'var(--page-px)',
+      }}
     >
-      {STATS.map((s, i) => (
-        <div key={s.label} className={`flex flex-1 flex-col sm:flex-row ${i < STATS.length - 1 ? 'border-b sm:border-b-0 border-border' : ''}`}>
-          <StatItem {...s} triggered={triggered} />
-          {i < STATS.length - 1 && (
-            <div className="hidden sm:block h-full w-px bg-border self-stretch" />
-          )}
-        </div>
-      ))}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <StatCard
+          filename="PORTFOLIO_STATS.JSON"
+          badge="LIVE"
+          triggered={triggered}
+          rows={[
+            { key: 'Total Portfolios', isCountUp: true, target: 12847, suffix: '', value: 0 },
+            { key: 'New Today', value: '34' },
+            { key: 'Last Updated', value: 'just now' },
+          ]}
+        />
+        <StatCard
+          filename="RESUME_EXPORTS.LOG"
+          badge="RUNNING"
+          triggered={triggered}
+          rows={[
+            { key: 'LaTeX Exports', isCountUp: true, target: 8204, suffix: '', value: 0 },
+            { key: 'PDF Exports', isCountUp: true, target: 3109, suffix: '', value: 0 },
+            { key: 'Last Export', value: '2 min ago' },
+          ]}
+        />
+        <StatCard
+          filename="ATS_ANALYSIS.DATA"
+          badge="v2.1"
+          triggered={triggered}
+          rows={[
+            { key: 'Avg ATS Score', isCountUp: true, target: 94, suffix: '%', value: 0 },
+            { key: 'Highest Score', value: '99%' },
+            { key: 'Roles Indexed', value: '847' },
+          ]}
+        />
+      </div>
     </div>
   )
 }

@@ -2,7 +2,7 @@ export default function ChaosClarity() {
   return (
     <section className="w-full border-t border-border">
       {/* Section label */}
-      <div className="pb-8 pt-12 text-center" style={{ paddingLeft: 'var(--page-px)', paddingRight: 'var(--page-px)' }}>
+      <div className="pb-8 pt-12" style={{ paddingLeft: 'var(--page-px)', paddingRight: 'var(--page-px)' }}>
         <p className="mb-3 font-mono tracking-[0.2em] text-accent" style={{ fontSize: 14 }}>
           CHAOS VS CLARITY
         </p>
@@ -122,9 +122,6 @@ export default function ChaosClarity() {
           <div className="mt-10 text-center">
             <div
               className="font-display font-extrabold leading-none text-accent text-[56px] sm:text-[clamp(56px,15vw,80px)]"
-              style={{
-                textShadow: '0 0 60px rgba(74,254,128,0.15)',
-              }}
             >
               60s
             </div>
